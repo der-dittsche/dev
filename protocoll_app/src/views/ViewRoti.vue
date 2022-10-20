@@ -3,7 +3,7 @@
     <div class="block has-text-centered">
       <div class="is-size-3 p-4">Select your class</div>
       <div class="select mb-4">
-        <select>
+        <select @change="classesSelectChanges($event)">
           <SelectClasses
             v-for="attendee in storesAttendees.attendees"
             :key="attendee.id"
@@ -29,7 +29,7 @@
         </thead>
         <tbody>
           <ListAttendees
-            v-for="attendee in storesAttendees.attendees"
+            v-for="attendee in storesAttendees.selectedClassesAttendees"
             :key="attendee.id"
             :attendee="attendee"
           />
@@ -63,4 +63,11 @@ import ListAttendees from "../components/Attendees/ListAttendees.vue";
 import SelectClasses from "../components/Attendees/SelectClasses.vue";
 
 const storesAttendees = useStoreAttendees();
+
+//const selectedClasses = $storeAttendees((classes) => {});
+
+function classesSelectChanges(event) {
+  console.log(event.target.value);
+  storesAttendees.selectedClass = event.target.value;
+}
 </script>

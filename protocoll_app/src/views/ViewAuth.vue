@@ -22,6 +22,7 @@
                   v-model="credentials.email"
                   class="input"
                   type="email"
+                  data-cy="login-email-input"
                   placeholder="e.g. alexsmith@gmail.com"
                 />
               </div>
@@ -33,13 +34,16 @@
                   v-model="credentials.password"
                   class="input"
                   type="password"
+                  data-cy="login-password-input"
                   placeholder="enter your password"
                 />
               </div>
             </div>
             <div class="field is-grouped is-grouped-right">
               <p class="control">
-                <button class="button is-primary">{{ formTitle }}</button>
+                <button class="button is-primary" data-cy="login-submit-button">
+                  {{ formTitle }}
+                </button>
               </p>
             </div>
           </form>

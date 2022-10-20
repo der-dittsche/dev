@@ -23,6 +23,7 @@ export const useStoreAttendees = defineStore("storeAttendees", {
     return {
       attendees: [],
       attendeesLoaded: false,
+      selectedClass: null,
     };
   },
   actions: {
@@ -79,5 +80,11 @@ export const useStoreAttendees = defineStore("storeAttendees", {
       if (getAttendeesSnapshot) getAttendeesSnapshot(); // unsubscribe from any listener
     },
   },
-  getters: {},
+  getters: {
+    selectedClassesAttendees: (state) => {
+      return state.attendees.filter(
+        (attendee) => attendee.classes === state.selectedClass
+      );
+    },
+  },
 });

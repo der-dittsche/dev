@@ -1,6 +1,6 @@
 describe("Logging In", () => {
-  const username = "//";
-  const password = "//";
+  const username = "sascha@user.de";
+  const password = "Lotta2013!";
 
   it("passes", () => {
     cy.visit("http://localhost:5173");
@@ -25,5 +25,11 @@ describe("Logging In", () => {
         password,
       },
     });
+  });
+  it("login okay", () => {
+    cy.visit("http://localhost:5173/#/auth");
+    cy.get('[data-cy="login-email-input"]').type(username);
+    cy.get('[data-cy="login-password-input"]').type(password);
+    cy.get('[data-cy="login-submit-button"]').click();
   });
 });
